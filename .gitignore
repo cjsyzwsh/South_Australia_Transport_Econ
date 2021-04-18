@@ -1,2 +1,3 @@
 # ignore
-/data_process
+/data/processed_large_data
+/process
