@@ -1,3 +1,4 @@
 # ignore
 /data/processed_large_data
 /process
+.DS_Store
