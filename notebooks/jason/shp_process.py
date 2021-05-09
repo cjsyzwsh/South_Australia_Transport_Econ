@@ -75,6 +75,17 @@ def shortest_path(shp_file):
         
     return OD_full_path
 
+def process_road_shp(road_file):
+    """
+        Input: road_file -- for example: gpd.read_file(mount_path + "/SA data/dataSA/roads/Roads_GDA2020.shp")
+        
+        Output: cleaned road.shp file
+ 
+    """
+    sa2_roads = road_file.loc[~road_file['class'].isna(),]
+    
+    return sa2_roads
+
 def union_road_land_shp(shp, road_shp):
     """
         Inputs:
@@ -602,7 +613,7 @@ def union_social(node_degree_poi_df, mount_path):
     
     return node_degree_poi_df
 
-def get_final_node_edge_dfs(shp_file, mount_path):
+def get_final_node_edge_dfs(shp_file, road_file, mount_path):
 
     """
         Converts shp_file (input) to the processed node_df and edge_df
@@ -618,7 +629,8 @@ def get_final_node_edge_dfs(shp_file, mount_path):
     sa2_south_au = gpd.read_file("../../data_process/shapefiles/sa2_south_au.shp")
 
     # read road networks
-    sa2_roads = gpd.read_file("../../data_process/shapefiles/sa2_roads.shp")
+    road_file = gpd.read_file("../../data_process/shapefiles/sa2_roads.shp")
+    sa2_roads = process_road_shp(road_file)
 
     # read job and income data
     jobs_all = pd.read_pickle("../../data_process/jobs_all.pkl")
@@ -654,8 +666,6 @@ flow_df = pd.read_pickle("../../data_process/flow_df.pkl")
 # read spatial files
 sa2_south_au = gpd.read_file("../../data_process/shapefiles/sa2_south_au.shp")
 
-# read road networks
-sa2_roads = gpd.read_file("../../data_process/shapefiles/sa2_roads.shp")
 
 # read job and income data
 jobs_all = pd.read_pickle("../../data_process/jobs_all.pkl")
