@@ -1,4 +1,6 @@
 # ignore
 /data/processed_large_data
+/data/processed_small_data
+/data_process
 /process
 .DS_Store
