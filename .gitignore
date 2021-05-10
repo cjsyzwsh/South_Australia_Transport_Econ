@@ -1,6 +1,11 @@
 # ignore
 /data/processed_large_data
+<<<<<<< HEAD
 /data/processed_small_data
 /data_process
+||||||| merged common ancestors
+=======
+/data/processed_small_data
+>>>>>>> 1a6d08375112834607391587ed1bb0df250bdfb2
 /process
 .DS_Store
