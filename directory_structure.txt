@@ -1,0 +1,56 @@
+©À©¤©¤ LICENSE
+©À©¤©¤ README.md          <- The top-level README for developers using this project.
+©À©¤©¤ conf
+©¦   ©À©¤©¤ base           <- Space for shared configurations like parameters
+©¦   ©¸©¤©¤ local          <- Space for local configurations, usually credentials
+©¦
+©À©¤©¤ data
+©¦   ©À©¤©¤ 01_raw         <- Imutable input data
+©¦   ©À©¤©¤ 02_intermediate<- Cleaned version of raw
+©¦   ©À©¤©¤ 03_processed   <- The data used for modelling
+©¦   ©À©¤©¤ 04_models      <- trained models
+©¦   ©À©¤©¤ 05_model_output<- model output
+©¦   ©¸©¤©¤ 06_reporting   <- Reports and input to frontend
+©¦
+©À©¤©¤ docs               <- Space for Sphinx documentation
+©¦
+©À©¤©¤ notebooks          <- Jupyter notebooks. Naming convention is date YYYYMMDD (for ordering),
+©¦                         the creator's initials, and a short `-` delimited description, e.g.
+©¦                         `20190601-jqp-initial-data-exploration`.
+©¦
+©À©¤©¤ references         <- Data dictionaries, manuals, and all other explanatory materials.
+©¦
+©À©¤©¤ results            <- Intermediate analysis as HTML, PDF, LaTeX, etc.
+©¦
+©À©¤©¤ requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
+©¦                         generated with `pip freeze > requirements.txt`
+©¦
+©À©¤©¤ .gitignore         <- Avoids uploading data, credentials, outputs, system files etc
+©¦
+©¸©¤©¤ src                <- Source code for use in this project.
+    ©À©¤©¤ __init__.py    <- Makes src a Python module
+    ©¦
+    ©À©¤©¤ d00_utils      <- Functions used across the project
+    ©¦   ©¸©¤©¤ remove_accents.py
+    ©¦
+    ©À©¤©¤ d01_data       <- Scripts to reading and writing data etc
+    ©¦   ©¸©¤©¤ load_data.py
+    ©¦
+    ©À©¤©¤ d02_intermediate<- Scripts to transform data from raw to intermediate
+    ©¦   ©¸©¤©¤ create_int_payment_data.py
+    ©¦
+    ©À©¤©¤ d03_processing <- Scripts to turn intermediate data into modelling input
+    ©¦   ©¸©¤©¤ create_master_table.py
+    ©¦
+    ©À©¤©¤ d04_modelling  <- Scripts to train models and then use trained models to make
+    ©¦   ©¦                 predictions
+    ©¦   ©¸©¤©¤ train_model.py
+    ©¦
+    ©À©¤©¤ d05_model_evaluation<- Scripts that analyse model performance and model selection
+    ©¦   ©¸©¤©¤ calculate_performance_metrics.py
+    ©¦    
+    ©À©¤©¤ d06_reporting  <- Scripts to produce reporting tables
+    ©¦   ©¸©¤©¤ create_rpt_payment_summary.py
+    ©¦
+    ©¸©¤©¤ d06_visualisation<- Scripts to create frequently used plots
+        ©¸©¤©¤ visualise_patient_journey.py

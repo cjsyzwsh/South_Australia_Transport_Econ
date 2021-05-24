@@ -1,6 +1,8 @@
 # South_Australia_Transport_Econ
-Analyze transport-economy relationship in SA
+This repository analyzes the relationship between transport infrastructure and economic growth in South Australia. It is conducted by Shenhao Wang at Media Lab, MIT.
 
-# code structure
-sample/util.py
+## Examples
+
+
+
 
