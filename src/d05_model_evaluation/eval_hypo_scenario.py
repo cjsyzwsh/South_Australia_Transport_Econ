@@ -123,6 +123,7 @@ def forward_simulation(edge_df, node_df, status_quo = True):
 
     return od_duration_pred, consumption_amount_mcc_source_pred, consumption_count_mcc_source_pred, flow_agents_pred, inc_pred
 
+
 # 1. Use the status quo
 status_quo = True
 od_duration_pred, consumption_amount_mcc_source_pred, consumption_count_mcc_source_pred, flow_agents_pred, inc_pred = \
@@ -189,6 +190,7 @@ edge_df['consumption_amount_increase'] = consumption_amount_mcc_source_pred_new 
 edge_df['consumption_count_increase'] = consumption_count_mcc_source_pred_new - consumption_count_mcc_source_pred
 edge_df['flow_agents_increase'] = flow_agents_pred_new - flow_agents_pred
 node_df['income_increase'] = inc_pred_new - inc_pred
+
 node_df['job_based_consumption_opportunity_increase'] = econ_opportunity_hypo_dic['job_based_consumption_opportunity']['job_based_consumption_opportunity'] - \
                             econ_opportunity_status_quo_dic['job_based_consumption_opportunity']['job_based_consumption_opportunity']
 node_df['pop_based_consumption_opportunity_increase'] = econ_opportunity_hypo_dic['pop_based_consumption_opportunity']['pop_based_consumption_opportunity'] - \
@@ -197,6 +199,13 @@ node_df['amenity_based_consumption_opportunity_increase'] = econ_opportunity_hyp
                             econ_opportunity_status_quo_dic['amenity_based_consumption_opportunity']['amenity_based_consumption_opportunity']
 node_df['diversity_based_consumption_opportunity_increase'] = econ_opportunity_hypo_dic['diversity_based_consumption_opportunity']['diversity_based_consumption_opportunity'] - \
                             econ_opportunity_status_quo_dic['diversity_based_consumption_opportunity']['diversity_based_consumption_opportunity']
+
+# save the status quo accessibility metrics
+node_df['amenity_based_consumption_opportunity']=econ_opportunity_status_quo_dic['amenity_based_consumption_opportunity']['amenity_based_consumption_opportunity']
+node_df['diversity_based_consumption_opportunity']=econ_opportunity_status_quo_dic['diversity_based_consumption_opportunity']['diversity_based_consumption_opportunity']
+node_df['pop_based_consumption_opportunity']=econ_opportunity_status_quo_dic['pop_based_consumption_opportunity']['pop_based_consumption_opportunity']
+node_df['job_based_consumption_opportunity']=econ_opportunity_status_quo_dic['job_based_consumption_opportunity']['job_based_consumption_opportunity']
+
 
 
 # save

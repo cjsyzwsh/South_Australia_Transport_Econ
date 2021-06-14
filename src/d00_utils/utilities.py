@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.axes_grid1 import make_axes_locatable
 from sklearn import linear_model
 import statsmodels.api as sm
+import matplotlib.pylab as pylab
 
 
 def compute_road_attributes(shp, road_shp):
@@ -111,17 +112,23 @@ def compute_intersection_attributes(shp_proj, road_proj):
     return degree_df
 
 
-def plot_sa2_node_attributes(node_shp, column_name, title_name, fig_name, save_path):
+def plot_sa2_node_attributes(node_shp, column_name, title_name, fig_name, save_path, node_shp_complete = None):
     '''
     plot the attributes for the SA2 nodes
     '''
     fig, ax = plt.subplots(figsize=(8, 8))
     divider = make_axes_locatable(ax) # for legend size
     cax = divider.append_axes("right", size="8%", pad=0.1) # for legend size
-    node_shp.plot(facecolor='w', edgecolor='k', ax = ax)
-    node_shp.plot(column = column_name, cmap='summer', legend=True, ax = ax, cax = cax) 
-    # different cmaps: 'summer', 'OrRd'
-    ax.set_title(title_name, fontsize=10)
+
+    if node_shp_complete is not None:
+        node_shp_complete.plot(facecolor='w', edgecolor='lightgrey', ax = ax)
+        node_shp.plot(facecolor='w', edgecolor='k', ax = ax)
+        node_shp.plot(column = column_name, cmap='summer', legend=True, ax = ax, cax = cax) 
+    else:
+        node_shp.plot(facecolor='w', edgecolor='k', ax = ax)
+        node_shp.plot(column = column_name, cmap='summer', legend=True, ax = ax, cax = cax)        
+        # different cmaps: 'summer', 'OrRd'
+    ax.set_title(title_name, fontsize=18)
     ax.set_axis_off()
     plt.tight_layout()
     fig.savefig(save_path+fig_name+'.png')
@@ -136,7 +143,7 @@ def plot_sa2_edge_attributes(edge_shp, node_shp, column_name, title_name, fig_na
     node_shp.plot(facecolor='None', edgecolor='black', ax = ax, zorder = 10)
     node_shp.centroid.plot(ax = ax, facecolor = 'r', markersize = 5.0, zorder = 5)
     edge_shp.plot(column = column_name, cmap='turbo', legend=True, alpha = 0.5, ax = ax, zorder = 0)
-    ax.set_title(title_name, fontsize=10)
+    ax.set_title(title_name, fontsize=18)
     ax.set_axis_off()
     plt.tight_layout()    
     fig.savefig(save_path+fig_name+'.png')
@@ -162,12 +169,12 @@ def plot_observed_predicted(df, y_name, x_name, model, save_path, picture_title,
     pred_y_list = linear_visual_res.predict(sm.add_constant(y_list))
     ax.plot(y_list, pred_y_list, linewidth = 2, color = 'r')
 
-    ax.set_xlabel("Observed")
-    ax.set_ylabel("Predicted")
+    ax.set_xlabel("Observed", fontsize = 12)
+    ax.set_ylabel("Predicted", fontsize = 12)
     ax.set_xlim(np.min(y_list) - .2* np.std(y_list), np.max(y_list) + .2* np.std(y_list))
     ax.set_ylim(np.min(pred_y) - .2* np.std(pred_y), np.max(pred_y) + .2* np.std(pred_y))
-    ax.set_title(picture_title)
-    ax.annotate("R2 = "+str(np.round(model.rsquared, 2)), xy=(.25, .85), xycoords='figure fraction')
+    ax.set_title(picture_title, fontsize = 15)
+    ax.annotate("R2 = "+str(np.round(model.rsquared, 2)), xy=(.25, .8), xycoords='figure fraction', fontsize = 20)
     plt.tight_layout()
     fig.savefig(save_path+fig_name+".png")
     plt.close()
@@ -285,7 +292,18 @@ def compute_econ_opportunity(metric_name, target_var_name, time_var_name, edge_d
     return metric_df
 
 
+def gini(x):
+    # (Warning: This is a concise implementation, but it is O(n**2)
+    # in time and memory, where n = len(x).  *Don't* pass in huge
+    # samples!)
 
+    # Mean absolute difference
+    mad = np.abs(np.subtract.outer(x, x)).mean()
+    # Relative mean absolute difference
+    rmad = mad/np.mean(x)
+    # Gini coefficient
+    g = 0.5 * rmad
+    return g
 
 
 

@@ -50,13 +50,18 @@ node_shp = node_shp.merge(node_df_policy_simulation[['SA2_MAIN16','income_increa
                                                      'amenity_based_consumption_opportunity_increase','diversity_based_consumption_opportunity_increase']],
                           on=['SA2_MAIN16'],how='inner')
 
+#
+with open(processing_data_path+'node_shp.pickle', 'rb') as f:
+    node_shp_complete = pickle.load(f)
+
+
 # visualize node change
 # sparse = True # control the visual density in the visualization
 column_name = 'income_increase'
 title_name = 'Increase of median income'
 save_path = report_path+'policy_simulation/'
 fig_name = 'simulation_income_increase'
-util.plot_sa2_node_attributes(node_shp, column_name, title_name, fig_name, save_path)
+util.plot_sa2_node_attributes(node_shp, column_name, title_name, fig_name, save_path, node_shp_complete)
 
 # ratio
 node_shp['income_increase_ratio'] = node_shp['income_increase']/node_shp['median_income_per_job_aud_persons']
@@ -64,34 +69,32 @@ column_name = 'income_increase_ratio'
 title_name = 'Increase of median income ratio'
 save_path = report_path+'policy_simulation/'
 fig_name = 'simulation_income_increase_ratio'
-util.plot_sa2_node_attributes(node_shp, column_name, title_name, fig_name, save_path)
+util.plot_sa2_node_attributes(node_shp, column_name, title_name, fig_name, save_path, node_shp_complete)
 
 #
 column_name = 'pop_based_consumption_opportunity_increase'
 title_name = 'Increase of population-based consumption opportunities'
 save_path = report_path+'policy_simulation/'
 fig_name = 'simulation_pop_based_consumption_opp'
-util.plot_sa2_node_attributes(node_shp, column_name, title_name, fig_name, save_path)
+util.plot_sa2_node_attributes(node_shp, column_name, title_name, fig_name, save_path, node_shp_complete)
 
 column_name = 'job_based_consumption_opportunity_increase'
 title_name = 'Increase of job-based consumption opportunities'
 save_path = report_path+'policy_simulation/'
 fig_name = 'simulation_job_based_consumption_opp'
-util.plot_sa2_node_attributes(node_shp, column_name, title_name, fig_name, save_path)
+util.plot_sa2_node_attributes(node_shp, column_name, title_name, fig_name, save_path, node_shp_complete)
 
 column_name = 'amenity_based_consumption_opportunity_increase'
 title_name = 'Increase of amenity-based consumption opportunities'
 save_path = report_path+'policy_simulation/'
 fig_name = 'simulation_amenity_based_consumption_opp'
-util.plot_sa2_node_attributes(node_shp, column_name, title_name, fig_name, save_path)
+util.plot_sa2_node_attributes(node_shp, column_name, title_name, fig_name, save_path, node_shp_complete)
 
 column_name = 'diversity_based_consumption_opportunity_increase'
 title_name = 'Increase of diversity-based consumption opportunities'
 save_path = report_path+'policy_simulation/'
 fig_name = 'simulation_diversity_based_consumption_opp'
-util.plot_sa2_node_attributes(node_shp, column_name, title_name, fig_name, save_path)
-
-
+util.plot_sa2_node_attributes(node_shp, column_name, title_name, fig_name, save_path, node_shp_complete)
 
 
 

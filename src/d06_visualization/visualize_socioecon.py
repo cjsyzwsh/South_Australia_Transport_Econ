@@ -69,6 +69,7 @@ for each_plot in plot_dic:
     save_path = report_path+'node_visual/'
     util.plot_sa2_node_attributes(node_shp, column_name, title_name, fig_name, save_path)
 
+
 # visualize edge_shp
 plot_dic = [('flow_agents', 'Flow of unique agents', 'edge_flow_agents'),
             ('flow_duration', 'Flow of agents duration', 'edge_flow_duration'),

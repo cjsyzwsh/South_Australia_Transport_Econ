@@ -52,6 +52,14 @@ file_dic[report_path+'policy_simulation/'+'simulation_income_increase.png'] = ov
 file_dic[report_path+'policy_simulation/'+'simulation_income_increase_ratio.png'] = overleaf_path + 'figs/'+'simulation_income_increase_ratio.png'
 file_dic[report_path+'policy_simulation/'+'simulation_diversity_based_consumption_opp.png'] = overleaf_path + 'figs/'+'simulation_diversity_based_consumption_opp.png'
 file_dic[report_path+'policy_simulation/'+'simulation_amenity_based_consumption_opp.png'] = overleaf_path + 'figs/'+'simulation_amenity_based_consumption_opp.png'
+#
+file_dic[report_path+'accessibility_metrics/'+'amenity_based_consumption_opp.png'] = overleaf_path + 'figs/'+'amenity_based_consumption_opp.png'
+file_dic[report_path+'accessibility_metrics/'+'diversity_based_consumption_opp.png'] = overleaf_path + 'figs/'+'diversity_based_consumption_opp.png'
+#
+file_dic[report_path+'descriptive_visual/'+'flow.png'] = overleaf_path + 'figs/'+'descriptive_flow.png'
+file_dic[report_path+'descriptive_visual/'+'socioecon.png'] = overleaf_path + 'figs/'+'descriptive_socioecon.png'
+file_dic[report_path+'descriptive_visual/'+'travel.png'] = overleaf_path + 'figs/'+'descriptive_travel.png'
+
 
 
 # copy and paste
